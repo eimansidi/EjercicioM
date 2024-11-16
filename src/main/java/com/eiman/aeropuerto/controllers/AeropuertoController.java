@@ -23,7 +23,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
+import javafx.scene.input.MouseButton;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -99,6 +99,13 @@ public class AeropuertoController implements Initializable {
             deshabilitarMenus(newValue == null);
         });
 
+        tabla.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                mostrarVentana();
+            }
+        });
+        menuContextual();
+
         cargarPublicos();
 
         rbGroup.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> _, Toggle _, Toggle newBtn) -> {
@@ -110,6 +117,59 @@ public class AeropuertoController implements Initializable {
         });
 
         filtroNombre.setOnKeyTyped(_ -> filtrar());
+    }
+
+    /**
+     * Metodo que crea el menú contextual
+     */
+    private void menuContextual() {
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem editarItem = new MenuItem("Editar Aeropuerto");
+        MenuItem borrarItem = new MenuItem("Borrar Aeropuerto");
+        contextMenu.getItems().addAll(editarItem,borrarItem);
+        editarItem.setOnAction(this::editarAeropuerto);
+        borrarItem.setOnAction(this::borrarAeropuerto);
+        tabla.setRowFactory(_ -> {
+            TableRow<Object> row = new TableRow<>();
+            row.setOnContextMenuRequested(event -> {
+                if (!row.isEmpty()) {
+                    tabla.getSelectionModel().select(row.getItem());
+                    contextMenu.show(row, event.getScreenX(), event.getScreenY());
+                }
+            });
+            return row;
+        });
+    }
+    /**
+     * Muestra la ventana de editar aeropuerto al hacer doble clic
+     */
+    private void mostrarVentana() {
+        Object airport = tabla.getSelectionModel().getSelectedItem();
+        if (airport != null) {
+            try {
+                Window ventana = rbPrivados.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/es/juliogtrenard/aeropuertos/fxml/datosAeropuerto.fxml"));
+                FormAeropuertoController controlador = new FormAeropuertoController(airport);
+                fxmlLoader.setController(controlador);
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/es/juliogtrenard/aeropuertos/img/avion.png"))));
+                stage.setTitle("AVIONES - EDITAR AEROPUERTO");
+                stage.initOwner(ventana);
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+                if (rbPublicos.isSelected()) {
+                    cargarPublicos();
+                } else {
+                    cargarPrivados();
+                }
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+                mensajeAlerta("Error abriendo ventana, por favor inténtelo de nuevo");
+            }
+        }
     }
 
     /**
