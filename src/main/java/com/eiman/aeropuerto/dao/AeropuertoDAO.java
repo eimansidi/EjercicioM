@@ -6,10 +6,10 @@ import com.eiman.aeropuerto.models.Direccion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Blob;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.*;
 
 /**
  * Ejecuta las consultas para la tabla Aeropuertos
@@ -168,6 +168,30 @@ public class AeropuertoDAO {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             return false;
+        }
+    }
+
+    /**
+     * Convierte un objeto File a Blob
+     *
+     * @param file fichero imagen
+     * @return blob el blob de imagen
+     * @throws SQLException Error de sql
+     * @throws IOException Error de E/S de datos
+     */
+    public static Blob convertFileToBlob(File file) throws SQLException, IOException {
+        DatabaseConnection connection = new DatabaseConnection();
+        try (Connection conn = connection.getConnection();
+             FileInputStream inputStream = new FileInputStream(file)) {
+            Blob blob = conn.createBlob();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            try (var outputStream = blob.setBinaryStream(1)) {
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+            }
+            return blob;
         }
     }
 }
