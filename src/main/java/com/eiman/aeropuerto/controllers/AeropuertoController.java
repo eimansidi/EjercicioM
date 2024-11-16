@@ -148,13 +148,13 @@ public class AeropuertoController implements Initializable {
         if (airport != null) {
             try {
                 Window ventana = rbPrivados.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/es/juliogtrenard/aeropuertos/fxml/datosAeropuerto.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/FormAeropuerto.fxml"));
                 FormAeropuertoController controlador = new FormAeropuertoController(airport);
                 fxmlLoader.setController(controlador);
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = new Stage();
                 stage.setScene(scene);
-                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/es/juliogtrenard/aeropuertos/img/avion.png"))));
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
                 stage.setTitle("AVIONES - EDITAR AEROPUERTO");
                 stage.initOwner(ventana);
                 stage.setResizable(false);
@@ -187,6 +187,7 @@ public class AeropuertoController implements Initializable {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
             stage.setTitle("AVIONES - AÑADIR AEROPUERTO");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -221,6 +222,7 @@ public class AeropuertoController implements Initializable {
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
                 stage.setTitle("AVIONES - EDITAR AEROPUERTO");
                 stage.initOwner(ventana);
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -381,6 +383,7 @@ public class AeropuertoController implements Initializable {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
             stage.setTitle("AVIONES - AÑADIR AVIÓN");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -404,6 +407,7 @@ public class AeropuertoController implements Initializable {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
             stage.setTitle("AVIONES - ACTIVAR/DESACTIVAR AVIÓN");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -427,6 +431,7 @@ public class AeropuertoController implements Initializable {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
             stage.setTitle("AVIONES - BORRAR AVIÓN");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);

@@ -26,6 +26,7 @@ public class AeropuertoApplication extends Application {
         stage.setTitle("INICIA SESION");
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/avion.png"))));
         stage.show();
     }
 
