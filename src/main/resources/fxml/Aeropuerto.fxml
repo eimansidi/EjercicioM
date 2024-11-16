@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eiman.aeropuerto.controllers.AeropuertoController">
+    <MenuBar maxWidth="1.7976931348623157E308">
+        <Menu mnemonicParsing="false" text="Aeropuertos">
+            <MenuItem mnemonicParsing="false" onAction="#aniadirAeropuerto" text="Añadir…" />
+            <MenuItem fx:id="menuEditarAeropuerto" disable="true" mnemonicParsing="false" onAction="#editarAeropuerto" text="Editar…" />
+            <MenuItem fx:id="menuBorrarAeropuerto" disable="true" mnemonicParsing="false" onAction="#borrarAeropuerto" text="Borrar" />
+            <MenuItem fx:id="menuInfoAeropuerto" disable="true" mnemonicParsing="false" onAction="#infoAeropuerto" text="Mostrar información" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Aviones">
+            <MenuItem mnemonicParsing="false" onAction="#aniadirAvion" text="Añadir…" />
+            <MenuItem mnemonicParsing="false" onAction="#activarDesactivarAvion" text="Activar / desactivar" />
+            <MenuItem mnemonicParsing="false" onAction="#borrarAvion" text="Borrar" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Ayuda" />
+    </MenuBar>
+    <FlowPane alignment="CENTER" prefWidth="200.0">
+        <VBox.margin>
+            <Insets bottom="20.0" top="20.0" />
+        </VBox.margin>
+        <Label text="LISTA DE AEROPUERTOS" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+    </FlowPane>
+    <TilePane alignment="CENTER" maxWidth="1.7976931348623157E308" prefColumns="3" prefRows="1">
+        <VBox.margin>
+            <Insets bottom="10.0" />
+        </VBox.margin>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308">
+            <RadioButton fx:id="rbPublicos" mnemonicParsing="false" selected="true" text="Públicos">
+                <toggleGroup>
+                    <ToggleGroup fx:id="rbGroup" />
+                </toggleGroup>
+                <padding>
+                    <Insets right="10.0" />
+                </padding>
+            </RadioButton>
+            <RadioButton fx:id="rbPrivados" mnemonicParsing="false" text="Privados" toggleGroup="$rbGroup">
+                <padding>
+                    <Insets left="10.0" />
+                </padding>
+            </RadioButton>
+        </HBox>
+        <HBox prefWidth="200.0" />
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308">
+            <Label text="Nombre:">
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+            </Label>
+            <TextField fx:id="filtroNombre">
+                <HBox.margin>
+                    <Insets left="5.0" />
+                </HBox.margin>
+            </TextField>
+        </HBox>
+    </TilePane>
+    <TableView fx:id="tabla">
+        <VBox.margin>
+            <Insets />
+        </VBox.margin>
+        <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+        </padding>
+    </TableView>
+</VBox>

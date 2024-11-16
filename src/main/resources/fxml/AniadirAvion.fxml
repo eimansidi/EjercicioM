@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="509.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eiman.aeropuerto.controllers.AniadirAvionController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="117.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="362.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <Label text="DATOS DEL AVIÓN" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <Label text="Módelo:" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+    <TextField fx:id="txtModelos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Label text="Asientos:" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+    <TextField fx:id="txtAsientos" maxWidth="-Infinity" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label text="Velocidad Máxima:" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+    <TextField fx:id="txtVelMax" maxWidth="-Infinity" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label text="Aeropuerto:" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+    <ComboBox fx:id="cbAeropuerto" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <FlowPane alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+        <Button mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+        <Button mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+    </FlowPane>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+      <children>
+          <RadioButton fx:id="rbDesactivado" mnemonicParsing="false" text="Desactivado">
+            <toggleGroup>
+                  <ToggleGroup fx:id="rbGroup" />
+            </toggleGroup>
+            <HBox.margin>
+               <Insets right="50.0" />
+            </HBox.margin>
+         </RadioButton>
+          <RadioButton fx:id="rbActivado" mnemonicParsing="false" selected="true" text="Activado" toggleGroup="$rbGroup" />
+      </children>
+   </HBox>
+</GridPane>
