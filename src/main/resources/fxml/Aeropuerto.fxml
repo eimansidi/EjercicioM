@@ -4,19 +4,48 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
 
 <VBox stylesheets="@../styles/estilo.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eiman.aeropuerto.controllers.AeropuertoController">
     <MenuBar maxWidth="1.7976931348623157E308">
         <Menu mnemonicParsing="false" text="Aeropuertos">
-            <MenuItem mnemonicParsing="false" onAction="#aniadirAeropuerto" text="Añadir…" />
-            <MenuItem fx:id="menuEditarAeropuerto" disable="true" mnemonicParsing="false" onAction="#editarAeropuerto" text="Editar…" />
-            <MenuItem fx:id="menuBorrarAeropuerto" disable="true" mnemonicParsing="false" onAction="#borrarAeropuerto" text="Borrar" />
-            <MenuItem fx:id="menuInfoAeropuerto" disable="true" mnemonicParsing="false" onAction="#infoAeropuerto" text="Mostrar información" />
+            <MenuItem mnemonicParsing="false" onAction="#aniadirAeropuerto" text="Añadir…">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="menuEditarAeropuerto" disable="true" mnemonicParsing="false" onAction="#editarAeropuerto" text="Editar…">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="menuBorrarAeropuerto" disable="true" mnemonicParsing="false" onAction="#borrarAeropuerto" text="Borrar">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="BACK_SPACE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="menuInfoAeropuerto" disable="true" mnemonicParsing="false" onAction="#infoAeropuerto" text="Mostrar información">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
         </Menu>
         <Menu mnemonicParsing="false" text="Aviones">
-            <MenuItem mnemonicParsing="false" onAction="#aniadirAvion" text="Añadir…" />
-            <MenuItem mnemonicParsing="false" onAction="#activarDesactivarAvion" text="Activar / desactivar" />
-            <MenuItem mnemonicParsing="false" onAction="#borrarAvion" text="Borrar" />
+            <MenuItem mnemonicParsing="false" onAction="#aniadirAvion" text="Añadir…">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#activarDesactivarAvion" text="Activar / desactivar">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#borrarAvion" text="Borrar">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
         </Menu>
         <Menu mnemonicParsing="false" text="Ayuda" />
     </MenuBar>
